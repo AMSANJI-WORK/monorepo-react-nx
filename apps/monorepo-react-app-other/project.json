@@ -1,0 +1,80 @@
+{
+  "name": "monorepo-react-app-other",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/monorepo-react-app-other/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/vite:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/monorepo-react-app-other"
+      },
+      "configurations": {
+        "development": {
+          "mode": "development"
+        },
+        "production": {
+          "mode": "production"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/vite:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "monorepo-react-app-other:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "monorepo-react-app-other:build:development",
+          "hmr": true
+        },
+        "production": {
+          "buildTarget": "monorepo-react-app-other:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "preview": {
+      "executor": "@nx/vite:preview-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "monorepo-react-app-other:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "monorepo-react-app-other:build:development"
+        },
+        "production": {
+          "buildTarget": "monorepo-react-app-other:build:production"
+        }
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/apps/monorepo-react-app-other"
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/monorepo-react-app-other/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "monorepo-react-app-other:build"
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,14 +1,14 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { Header } from '@monorepo-react/header';
+import styles from './app.module.css';
+
 import NxWelcome from './nx-welcome';
+import { Header } from '@monorepo-react/header';
 export function App() {
   return (
-    <>
+    <div>
       <Header />
-      <main>
-        <NxWelcome title="monorepo-react" />
-      </main>
-    </>
+      <NxWelcome title="monorepo-react-app-other" />
+    </div>
   );
 }
 
